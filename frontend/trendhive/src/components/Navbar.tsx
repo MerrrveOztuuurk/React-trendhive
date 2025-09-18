@@ -1,18 +1,18 @@
-import {Menu, SquareUser, Waves } from 'lucide-react'
+import {Menu, SquareUser } from 'lucide-react'
 import React from 'react'
 
 const Navbar = () => {
   return (
-    <div className='bg-bg-y w-full top-0 flex justify-between items-center p-2 border-b-2'>
-        <button><Menu /></button>
+    <div className='bg-bg-o w-full top-0 flex justify-between items-center py-4 px-2'>
+        <button><Menu color='#fff'/></button>
         <div className='flex items-center gap-2'>
-        <Waves color='#F59C27'/>
-         <span>Trendhive</span>
+         <span className='text-purple-500 font-poppins text-3xl'>Trendhive</span>
         </div>
         
-        <button><SquareUser /></button>
+        <button><SquareUser color='#fff'/></button>
 
     </div>
+    
   )
 }
 
