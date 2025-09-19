@@ -2,22 +2,22 @@ const Categories = () => {
   const categories = [
     {
       url: "https://img.freepik.com/free-photo/pair-trainers_144627-3799.jpg", // ayakkabı
-      title: "Ayakkabı",
+      title: "Shoes",
       subtitle: "120 Ürün",
     },
     {
       url: "https://img.freepik.com/free-photo/blue-tshirt_125540-727.jpg", // giyim
-      title: "Giyim",
+      title: "Clothes",
       subtitle: "85 Ürün",
     },
     {
       url: "https://img.freepik.com/free-photo/fashionable-leather-handbag_144627-3688.jpg", // çanta
-      title: "Çanta",
+      title: "Bag",
       subtitle: "60 Ürün",
     },
     {
       url: "https://img.freepik.com/free-photo/close-up-elegant-jewelry_23-2148513648.jpg", // takı
-      title: "Takı",
+      title: "Jewelry",
       subtitle: "45 Ürün",
     },
   ];

@@ -1,22 +1,15 @@
 import { ArrowDownUp, Menu } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
+import type { Product } from "../types/types";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleWishlist } from "../redux/slices/wishlistSlice";
+import type { RootState } from "../redux/store";
 
-interface Product {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  category: string;
-  image: string;
-  rating: {
-    rate: number;
-    count: number;
-  };
-}
-
-const Products = () => {
+const Products: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
+  const dispatch = useDispatch();
+  const wishlistItems = useSelector((state: RootState) => state.wishlist.items);
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
@@ -38,10 +31,14 @@ const Products = () => {
       </div>
 
       <div className="grid grid-cols-2 gap-4">
-       {products.length > 0 &&
-    products.map((product) => (
-      <ProductCard key={product.id} product={product} />
-    ))}
+        {products.map((product) => (
+          <ProductCard
+            key={product.id}
+            product={product}
+            isFavorite={wishlistItems.some((p) => p.id === product.id)}
+            toggleWishlist={() => dispatch(toggleWishlist(product))}
+          />
+        ))}
       </div>
     </div>
   );

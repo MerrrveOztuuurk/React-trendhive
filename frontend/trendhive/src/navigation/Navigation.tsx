@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Home from "../pages/Home";
+import Wishlist from "../pages/Wishlist"
 
 
 const Navigation: React.FC = () => {
@@ -13,6 +14,7 @@ const Navigation: React.FC = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
           <Route path="/home" element={<Home />} />
+             <Route path="/wishlist" element={<Wishlist />} />
       </Routes>
     </Router>
   );
