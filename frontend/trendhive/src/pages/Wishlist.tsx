@@ -26,7 +26,7 @@ const Wishlist: React.FC = () => {
       {wishlistItems.length === 0 ? (
         <p>No items in wishlist.</p>
       ) : (
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-3 gap-4">
           {wishlistItems.map((product) => (
             <ProductCard
               key={product.id}

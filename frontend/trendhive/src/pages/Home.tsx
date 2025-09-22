@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
 import Gradient from '../components/Gradient'
-import SearchBar from '../components/SearchBar'
+// import SearchBar from '../components/SearchBar'
 import BreadCrumb from '../components/BreadCrumb'
 import Categories from '../components/Categories'
 import Products from '../components/Products'
@@ -12,7 +12,7 @@ const Home = () => {
     <div>
         <Navbar />
         <Gradient />
-        <SearchBar />
+        {/* <SearchBar /> */}
         <BreadCrumb />
         <Categories />
         <Products />

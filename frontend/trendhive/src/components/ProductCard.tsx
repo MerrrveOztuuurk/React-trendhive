@@ -30,6 +30,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, isFavorite, toggleWi
 
       <h3 className="text-sm font-medium text-center line-clamp-2">{product.title}</h3>
       <p className="text-purple-600 font-semibold mt-1">${product.price}</p>
+       <p className="text-purple-600 font-semibold mt-1">{product.category}</p>
     </div>
   );
 };

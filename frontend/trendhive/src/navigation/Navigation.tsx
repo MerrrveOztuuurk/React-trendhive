@@ -6,6 +6,7 @@ import Home from "../pages/Home";
 import Wishlist from "../pages/Wishlist"
 import { Layout } from "lucide-react";
 import Cart from "../pages/Cart";
+import CategoryProducts from "../pages/CategoryProducts";
 
 
 const Navigation: React.FC = () => {
@@ -19,6 +20,7 @@ const Navigation: React.FC = () => {
           <Route path="/home" element={<Home />} />
              <Route path="/wishlist" element={<Wishlist />} />
              <Route path="/cart" element={<Cart />}/>
+              <Route path="/category/:category" element={<CategoryProducts />} />
       </Routes>
     </Router>
   );

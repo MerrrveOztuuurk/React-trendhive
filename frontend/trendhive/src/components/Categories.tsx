@@ -1,38 +1,38 @@
-const Categories = () => {
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import clothes from '../assets/img/clothes.jpg';
+import jewelry from "../assets/img/jewelry.jpg";
+import computer from "../assets/img/computer.jpg";
+
+
+const Categories: React.FC = () => {
+  const navigate = useNavigate();
   const categories = [
-    {
-      url: "https://img.freepik.com/free-photo/pair-trainers_144627-3799.jpg", // ayakkabı
-      title: "Shoes",
-      subtitle: "120 Ürün",
+    { 
+      title: "Clothes", 
+      image: clothes 
     },
-    {
-      url: "https://img.freepik.com/free-photo/blue-tshirt_125540-727.jpg", // giyim
-      title: "Clothes",
-      subtitle: "85 Ürün",
+    { 
+      title: "Jewelry", 
+      image: jewelry
     },
-    {
-      url: "https://img.freepik.com/free-photo/fashionable-leather-handbag_144627-3688.jpg", // çanta
-      title: "Bag",
-      subtitle: "60 Ürün",
-    },
-    {
-      url: "https://img.freepik.com/free-photo/close-up-elegant-jewelry_23-2148513648.jpg", // takı
-      title: "Jewelry",
-      subtitle: "45 Ürün",
+    { 
+      title: "Technology", 
+      image: computer 
     },
   ];
 
   return (
-    <div className="mx-4 bg-white rounded-xl shadow-lg shadow-gray-100 p-6">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-        {categories.map(({ url, title, subtitle }, index) => (
+    <div className="mx-4 bg-white rounded-xl shadow-lg shadow-gray-100 p-2">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-2">
+        {categories.map((cat, id) => (
           <div
-            key={index}
-            className="flex flex-col items-center p-4 border rounded-xl hover:shadow-lg transition"
+            key={id}
+            className="flex flex-col items-center p-2 border rounded-xl hover:shadow-lg transition cursor-pointer"
+            onClick={() => navigate(`/category/${cat.title.toLowerCase()}`)}
           >
-            <img src={url} className="w-32 h-32 object-contain mb-3" />
-            <span className="font-semibold text-lg">{title}</span>
-            <span className="text-gray-500 text-sm">{subtitle}</span>
+            <img src={cat.image} className="w-40 h-40 object-contain mb-3" />
+            <span className="font-semibold text-lg">{cat.title}</span>
           </div>
         ))}
       </div>
