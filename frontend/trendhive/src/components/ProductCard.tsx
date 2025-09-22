@@ -10,7 +10,18 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, isFavorite, toggleWishlist }) => {
   return (
-    <div className="border rounded-xl p-4 shadow-md flex flex-col items-center">
+    <div className="relative border rounded-xl p-4 shadow-md flex flex-col items-center">
+      <button
+        onClick={toggleWishlist}
+        className="absolute top-2 right-2"
+      >
+        <Heart
+          className={`w-5 h-5 ${
+            isFavorite ? "text-purple-500 fill-purple-500" : "text-gray-400"
+          }`}
+        />
+      </button>
+
       <img
         src={product.image}
         alt={product.title}
@@ -19,11 +30,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, isFavorite, toggleWi
 
       <h3 className="text-sm font-medium text-center line-clamp-2">{product.title}</h3>
       <p className="text-purple-600 font-semibold mt-1">${product.price}</p>
-      <button onClick={toggleWishlist} className="mt-2">
-        <Heart
-          className={isFavorite ? "text-purple-500 fill-purple-500" : "text-gray-400"}
-        />
-      </button>
     </div>
   );
 };

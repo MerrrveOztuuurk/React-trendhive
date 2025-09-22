@@ -1,7 +1,7 @@
 
 import './App.css'
 import './index.css'
-import Navigation from './navigation/NAvigation'
+import Navigation from './navigation/Navigation'
 
 
 function App() {

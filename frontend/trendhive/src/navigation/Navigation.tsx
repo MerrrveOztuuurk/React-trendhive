@@ -4,17 +4,21 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Home from "../pages/Home";
 import Wishlist from "../pages/Wishlist"
+import { Layout } from "lucide-react";
+import Cart from "../pages/Cart";
 
 
 const Navigation: React.FC = () => {
   return (
     <Router>
       <Routes>
+        <Route element={<Layout />}></Route>
          <Route path="/" element={<Navigate to="/home" replace />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
           <Route path="/home" element={<Home />} />
              <Route path="/wishlist" element={<Wishlist />} />
+             <Route path="/cart" element={<Cart />}/>
       </Routes>
     </Router>
   );

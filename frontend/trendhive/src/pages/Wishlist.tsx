@@ -3,10 +3,22 @@ import { useDispatch, useSelector } from "react-redux";
 import type { RootState } from "../redux/store";
 import { toggleWishlist } from "../redux/slices/wishlistSlice";
 import ProductCard from "../components/ProductCard";
+import { useNavigate } from "react-router-dom";
+import type { Product } from "../types/types";
 
 const Wishlist: React.FC = () => {
   const wishlistItems = useSelector((state: RootState) => state.wishlist.items);
+  const user = useSelector((state: RootState) => state.auth.user);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleToggleWishlist = (product: Product) => {
+    if (!user) {
+      navigate("/login");
+    } else {
+      dispatch(toggleWishlist(product));
+    }
+  };
 
   return (
     <div className="p-4">
@@ -20,7 +32,7 @@ const Wishlist: React.FC = () => {
               key={product.id}
               product={product}
               isFavorite={true}
-              toggleWishlist={() => dispatch(toggleWishlist(product))}
+              toggleWishlist={() => handleToggleWishlist(product)}
             />
           ))}
         </div>
