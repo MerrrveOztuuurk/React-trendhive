@@ -5,11 +5,14 @@ import type { Product } from "../types/types";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleWishlist } from "../redux/slices/wishlistSlice";
 import type { RootState } from "../redux/store";
+import { useNavigate } from "react-router-dom";
 
 const Products: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const dispatch = useDispatch();
   const wishlistItems = useSelector((state: RootState) => state.wishlist.items);
+  const user = useSelector((state: RootState) => state.auth.user); 
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
@@ -17,6 +20,14 @@ const Products: React.FC = () => {
       .then((data: Product[]) => setProducts(data))
       .catch((err) => console.error("Error fetching products:", err));
   }, []);
+
+  const handleToggleWishlist = (product: Product) => {
+    if (!user) {
+      navigate("/login");
+      return;
+    }
+    dispatch(toggleWishlist(product));
+  };
 
   return (
     <div className="grid mt-4 p-4 gap-4">
@@ -36,7 +47,7 @@ const Products: React.FC = () => {
             key={product.id}
             product={product}
             isFavorite={wishlistItems.some((p) => p.id === product.id)}
-            toggleWishlist={() => dispatch(toggleWishlist(product))}
+            toggleWishlist={() => handleToggleWishlist(product)} 
           />
         ))}
       </div>
