@@ -30,6 +30,14 @@ const CategoryProducts: React.FC = () => {
     dispatch(toggleWishlist(product));
   };
 
+    const handleToggleCart = (product: Product) => {
+    if (!user) {
+      navigate("/login");
+      return;
+    }
+    dispatch(toggleWishlist(product));
+  };
+
   const filteredProducts = products.filter((p) => {
     if (!category) return false;
 
@@ -54,6 +62,8 @@ const CategoryProducts: React.FC = () => {
           product={product}
           isFavorite={wishlistItems.some((p) => p.id === product.id)}
           toggleWishlist={() => handleToggleWishlist(product)}
+          toggleCart={() => handleToggleCart(product)}
+          hideCartButton={false}
         />
       ))}
     </div>

@@ -70,7 +70,7 @@ const BottomNavigation = () => {
           </button>
         </div>
 
-        {/* ✅ Kullanıcı e-postası */}
+     
         <div className="p-4 border-b text-gray-800 font-medium">
           {user ? user.email : "Guest"}
         </div>

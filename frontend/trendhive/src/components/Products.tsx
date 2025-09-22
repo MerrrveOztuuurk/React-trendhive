@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleWishlist } from "../redux/slices/wishlistSlice";
 import type { RootState } from "../redux/store";
 import { useNavigate } from "react-router-dom";
+import { toggleCart } from "../redux/slices/cartSlice";
 
 const Products: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -27,6 +28,16 @@ const Products: React.FC = () => {
       return;
     }
     dispatch(toggleWishlist(product));
+    navigate("/wishlist");
+  };
+
+    const handleToggleCart = (product: Product) => {
+    if (!user) {
+      navigate("/login");
+      return;
+    }
+    dispatch(toggleCart(product));
+    navigate("/cart");
   };
 
   return (
@@ -48,6 +59,8 @@ const Products: React.FC = () => {
             product={product}
             isFavorite={wishlistItems.some((p) => p.id === product.id)}
             toggleWishlist={() => handleToggleWishlist(product)} 
+            toggleCart={() => handleToggleCart(product)}
+            hideCartButton={false}
           />
         ))}
       </div>
