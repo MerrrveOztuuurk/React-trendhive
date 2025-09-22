@@ -1,6 +1,6 @@
 import { Heart, Menu, ShoppingCart, SquareUser, X } from "lucide-react";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import type { RootState } from "../redux/store";
 
@@ -10,8 +10,16 @@ const BottomNavigation = () => {
   const [active, setActive] = useState<string>("menu");
   const [activeAccount, setActiveAccount] = useState<string>("account");
 
-  // ✅ Redux'tan user bilgisini çekiyoruz
+  const navigate = useNavigate();
   const user = useSelector((state: RootState) => state.auth.user);
+
+
+  const menuCategories = ["Clothes", "Technology", "Jewelry"];
+
+  const handleCategoryClick = (category: string) => {
+    navigate(`/category/${category.toLowerCase()}`); 
+    setOpenMenu(false); 
+  };
 
   return (
     <div className="fixed bottom-0 w-full">
@@ -35,18 +43,15 @@ const BottomNavigation = () => {
           </button>
         </div>
         <ul className="flex flex-col p-4 space-y-3 text-gray-700">
-          <li className="hover:bg-purple-300 px-3 py-2 rounded cursor-pointer">
-            Shoes
-          </li>
-          <li className="hover:bg-purple-300 px-3 py-2 rounded cursor-pointer">
-            Clothes
-          </li>
-          <li className="hover:bg-purple-300 px-3 py-2 rounded cursor-pointer">
-            Bag
-          </li>
-          <li className="hover:bg-purple-300 px-3 py-2 rounded cursor-pointer">
-            Jewelry
-          </li>
+          {menuCategories.map((cat) => (
+            <li
+              key={cat}
+              className="hover:bg-purple-300 px-3 py-2 rounded cursor-pointer"
+              onClick={() => handleCategoryClick(cat)}
+            >
+              {cat}
+            </li>
+          ))}
         </ul>
       </div>
 
@@ -70,7 +75,6 @@ const BottomNavigation = () => {
           </button>
         </div>
 
-     
         <div className="p-4 border-b text-gray-800 font-medium">
           {user ? user.email : "Guest"}
         </div>
@@ -87,51 +91,30 @@ const BottomNavigation = () => {
 
       {/* Bottom Nav */}
       <div className="flex justify-around bg-bg-o border-t-2 py-2 relative z-50">
-        {/* Menu */}
         <button
           className="grid place-items-center"
           onClick={() => {
             setOpenMenu(true);
             setActive("menu");
+            
           }}
         >
           <Menu className={active === "menu" ? "text-purple-500" : "text-white"} />
-          <span className={active === "menu" ? "text-purple-500" : "text-white"}>
-            Menu
-          </span>
+          <span className={active === "menu" ? "text-purple-500" : "text-white"}>Menu</span>
         </button>
 
-        {/* Wishlist */}
-        <button
-          className="grid place-items-center"
-          onClick={() => setActive("wishlist")}
-        >
-          <Heart
-            className={active === "wishlist" ? "text-purple-500" : "text-white"}
-          />
+        <button className="grid place-items-center" onClick={() => setActive("wishlist")}>
+          <Heart className={active === "wishlist" ? "text-purple-500" : "text-white"} />
           <Link to="/wishlist">
-            <span
-              className={active === "wishlist" ? "text-purple-500" : "text-white"}
-            >
-              Wishlist
-            </span>
+            <span className={active === "wishlist" ? "text-purple-500" : "text-white"}>Wishlist</span>
           </Link>
         </button>
 
-        {/* Cart */}
-        <button
-          className="grid place-items-center"
-          onClick={() => setActive("cart")}
-        >
-          <ShoppingCart
-            className={active === "cart" ? "text-purple-500" : "text-white"}
-          />
-          <span className={active === "cart" ? "text-purple-500" : "text-white"}>
-            Cart
-          </span>
+        <button className="grid place-items-center" onClick={() => setActive("cart")}>
+          <ShoppingCart className={active === "cart" ? "text-purple-500" : "text-white"} />
+          <span className={active === "cart" ? "text-purple-500" : "text-white"}>Cart</span>
         </button>
 
-        {/* Account */}
         <button
           className="grid place-items-center"
           onClick={() => {
@@ -139,14 +122,8 @@ const BottomNavigation = () => {
             setActiveAccount("account");
           }}
         >
-          <SquareUser
-            className={activeAccount === "account" ? "text-purple-500" : "text-white"}
-          />
-          <span
-            className={activeAccount === "account" ? "text-purple-500" : "text-white"}
-          >
-            Account
-          </span>
+          <SquareUser className={activeAccount === "account" ? "text-purple-500" : "text-white"} />
+          <span className={activeAccount === "account" ? "text-purple-500" : "text-white"}>Account</span>
         </button>
       </div>
     </div>

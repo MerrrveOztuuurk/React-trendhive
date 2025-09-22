@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
 import type { Product } from "../types/types";
 import { useSelector, useDispatch } from "react-redux";
@@ -54,8 +54,14 @@ const CategoryProducts: React.FC = () => {
   });
 
   return (
-    <div className="p-4 grid grid-cols-2 gap-4">
-      <h2 className="text-2xl font-semibold col-span-2 mb-4">{category?.toUpperCase()}</h2>
+    <div>
+        <div className="flex my-4">
+          <h2 className="text-2xl font-semibold col-span-2 mx-4">{category?.toUpperCase()}</h2>
+           <Link to="/home">
+            <h2 className="text-2xl text-purple-500 cursor-pointer">Home</h2>
+            </Link>
+    </div>
+    <div className="p-4 grid grid-cols-3 gap-4">
       {filteredProducts.map((product) => (
         <ProductCard
           key={product.id}
@@ -66,6 +72,7 @@ const CategoryProducts: React.FC = () => {
           hideCartButton={false}
         />
       ))}
+    </div>
     </div>
   );
 };

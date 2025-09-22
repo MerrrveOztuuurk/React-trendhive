@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 import clothes from '../assets/img/clothes.jpg';
 import jewelry from "../assets/img/jewelry.jpg";
 import computer from "../assets/img/computer.jpg";

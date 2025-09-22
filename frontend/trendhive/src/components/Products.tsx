@@ -1,4 +1,4 @@
-import { ArrowDownUp, Menu } from "lucide-react";
+
 import React, { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 import type { Product } from "../types/types";
@@ -44,13 +44,6 @@ const Products: React.FC = () => {
     <div className="grid mt-4 p-4 gap-4">
       <span className="text-2xl font-semibold">Shop</span>
 
-      <div className="flex justify-between">
-        <a href="#" className="flex flex-1 gap-1 items-center">
-          <Menu />
-          <span>Show Sidebar</span>
-        </a>
-        <ArrowDownUp />
-      </div>
 
       <div className="grid grid-cols-3 gap-4">
         {products.map((product) => (

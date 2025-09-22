@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import type { RootState } from "../redux/store";
 import { toggleCart } from "../redux/slices/cartSlice";
 import ProductCard from "../components/ProductCard";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import type { Product } from "../types/types";
 
 const Cart: React.FC = () => {
@@ -22,9 +22,13 @@ const Cart: React.FC = () => {
     }
   };
 
+  const totalPrice = cartItems.reduce((acc,item) => acc +item.price, 0);
+
   return (
     <div className="p-4">
-      <h2 className="text-2xl font-semibold mb-4">My Cart</h2>
+      <Link to="/home">
+            <h2 className="text-2xl font-semibold mb-4 cursor-pointer text-purple-500">Home</h2>
+      </Link>
       {cartItems.length === 0 ? (
         <p>No items in cart.</p>
       ) : (
@@ -38,9 +42,15 @@ const Cart: React.FC = () => {
               toggleCart={() => handleToggleCart(product)}
               hideCartButton={true}
             />
-          ))}
-        </div>
+          ))}          
+        </div>  
       )}
+      <div className="flex justify-between my-16">
+            <span className="text-xl font-light">Total Price : <span className="text-purple-500">{totalPrice}</span></span>
+            <button onClick={() => navigate("/payment")} className="bg-purple-500 p-4 rounded-xl">
+              <span className="text-white p-8">Pay</span>
+            </button>
+          </div>
     </div>
   );
 };

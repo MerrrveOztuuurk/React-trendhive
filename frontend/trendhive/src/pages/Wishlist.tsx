@@ -4,7 +4,7 @@ import type { RootState } from "../redux/store";
 import { toggleWishlist } from "../redux/slices/wishlistSlice";
 import { toggleCart } from "../redux/slices/cartSlice";
 import ProductCard from "../components/ProductCard";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import type { Product } from "../types/types";
 
 const Wishlist: React.FC = () => {
@@ -32,7 +32,9 @@ const Wishlist: React.FC = () => {
 
   return (
     <div className="p-4">
-      <h2 className="text-2xl font-semibold mb-4">My Wishlist</h2>
+      <Link to="/home">
+       <h2 className="text-2xl font-semibold mb-4 cursor-pointer text-purple-500">Home</h2>
+      </Link>
       {wishlistItems.length === 0 ? (
         <p>No items in wishlist.</p>
       ) : (
