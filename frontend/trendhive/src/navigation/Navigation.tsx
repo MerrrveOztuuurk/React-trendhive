@@ -7,7 +7,7 @@ import Wishlist from "../pages/Wishlist"
 import { Layout } from "lucide-react";
 import Cart from "../pages/Cart";
 import CategoryProducts from "../pages/CategoryProducts";
-import Payment from "../pages/Payment";
+import Checkout from "../pages/Checkout";
 
 
 const Navigation: React.FC = () => {
@@ -16,13 +16,13 @@ const Navigation: React.FC = () => {
       <Routes>
         <Route element={<Layout />}></Route>
          <Route path="/" element={<Navigate to="/home" replace />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-          <Route path="/home" element={<Home />} />
-             <Route path="/wishlist" element={<Wishlist />} />
-             <Route path="/cart" element={<Cart />}/>
-              <Route path="/category/:category" element={<CategoryProducts />} />
-              <Route path="/payment" element={<Payment />} />
+         <Route path="/login" element={<Login />} />
+         <Route path="/register" element={<Register />} />
+         <Route path="/home" element={<Home />} />
+         <Route path="/wishlist" element={<Wishlist />} />
+         <Route path="/cart" element={<Cart />}/>
+         <Route path="/category/:category" element={<CategoryProducts />} />
+         <Route path="/checkout" element={<Checkout />} />
       </Routes>
     </Router>
   );

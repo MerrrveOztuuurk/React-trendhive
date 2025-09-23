@@ -1,1 +1,4 @@
 backend/trendhive/node_modules/
+backend/trendhive/.env
+frontend/trendhive/.env
+backend/trendhive/.env

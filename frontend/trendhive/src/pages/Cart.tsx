@@ -47,7 +47,7 @@ const Cart: React.FC = () => {
       )}
       <div className="flex justify-between my-16">
             <span className="text-xl font-light">Total Price : <span className="text-purple-500">{totalPrice}</span></span>
-            <button onClick={() => navigate("/payment")} className="bg-purple-500 p-4 rounded-xl">
+            <button onClick={() => navigate("/checkout", { state : {totalPrice}})} className="bg-purple-500 p-4 rounded-xl">
               <span className="text-white p-8">Pay</span>
             </button>
           </div>
